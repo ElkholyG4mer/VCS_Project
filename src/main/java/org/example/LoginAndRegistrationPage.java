@@ -3,39 +3,44 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginAndRegistrationPage {
-    static WebDriver driver = new ChromeDriver();
+    private WebDriver driver ;
+    //static String pageURL = "https://automationexercise.com";
+    public LoginAndRegistrationPage(WebDriver driver) {
+        this.driver = driver;
+        //PageFactory.initElements(driver,this);
+    }
 
     //Locators
-    static WebElement loginTabButton = driver.findElement(By.xpath("//a[@href=\"/login\"]"));
-    static WebElement loginHeaderCL = driver.findElement(By.xpath("//div[@class=\"login-form\"]//h2"));
-    static WebElement emailTextBox = driver.findElement(By.xpath("//input[@data-qa=\"login-email\"]"));
-    static WebElement passwordTextBox = driver.findElement(By.xpath("//input[@data-qa=\"login-password\"]"));
-    static WebElement loginButton = driver.findElement(By.xpath("//button[@data-qa=\"login-button\"]"));
+    private WebElement loginTabButton = driver.findElement(By.xpath("//a[@href=\"/login\"]"));
+    private WebElement loginHeaderCL = driver.findElement(By.xpath("//div[@class=\"login-form\"]//h2"));
+    private WebElement emailTextBox = driver.findElement(By.xpath("//input[@data-qa=\"login-email\"]"));
+    private WebElement passwordTextBox = driver.findElement(By.xpath("//input[@data-qa=\"login-password\"]"));
+    private WebElement loginButton = driver.findElement(By.xpath("//button[@data-qa=\"login-button\"]"));
 
     //Actions
-    public static void OpenBrowser (){
+    /*public static void OpenBrowser (){
         driver.get("https://automationexercise.com");
         driver.manage().window().maximize();
-    }
-    public static void ClickOnLoginTabButton (){
+    }*/
+    public void ClickOnLoginTabButton (){
         loginTabButton.click();
     }
 
-    public static void FillLoginData (String userName , String password){
+    public void FillLoginData (String userName , String password){
         emailTextBox.clear();
         emailTextBox.sendKeys(userName);
         passwordTextBox.clear();
         passwordTextBox.sendKeys(password);
     }
 
-    public static void ClickOnLoginButton(){
+    public void ClickOnLoginButton(){
         loginButton.click();
     }
 
-    public static void login (String userName , String password){
+    public void login (String userName , String password){
         ClickOnLoginTabButton();
         FillLoginData(userName,password);
         ClickOnLoginButton();
