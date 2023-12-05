@@ -3,35 +3,38 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import utils.JsonFileManager;
+
 import java.util.concurrent.TimeUnit;
 
 
 
 public class LoginAndRegistrationTests {
-    public WebDriver driver;
-    public LoginAndRegistrationPage loginpage ;
-    //driver = new ChromeDriver();
-    //private LoginAndRegistrationPage LoginPage = new LoginAndRegistrationPage(driver);
+    private WebDriver driver;
+
+    private JsonFileManager testData;
+    private LoginAndRegistrationPage loginpage ;
+
+    @BeforeClass
+    public void beforeClass() {
+        testData = new JsonFileManager("src/test/resources/Test Data/loginTestData.json");
+    }
+
     @BeforeMethod
     public void setup(){
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\mosta\\IdeaProjects\\First_Automation_Project\\drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-        loginpage = new LoginAndRegistrationPage(driver);
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://automationexercise.com");
+        driver = new EdgeDriver();
         driver.manage().window().maximize();
+        loginpage = new LoginAndRegistrationPage(driver);
+        loginpage.urlNavigate();
     }
 
     @Test
     public void ValidateLogin (){
-        //LoginAndRegistrationPage loginpage = new LoginAndRegistrationPage(driver);
         loginpage.ClickOnLoginTabButton();
-        loginpage.FillLoginData("mostafa@gmail.com","abcd123456");
+        loginpage.FillLoginData(testData.getTestData("userName"),testData.getTestData("passWord"));
         loginpage.ClickOnLoginButton();
     }
 
