@@ -17,6 +17,7 @@ public class LoginAndRegistrationPage {
     private By emailTextBox = By.xpath("//input[@data-qa='login-email']");
     private By passwordTextBox = By.xpath("//input[@data-qa='login-password']");
     private By loginButton = By.xpath("//button[@data-qa='login-button']");
+    private By logoutButton = By.xpath("//a[@href='/logout']");
     /*private WebElement loginTabButton = driver.findElement(By.xpath("//a[@href=\"/login\"]"));
     private WebElement loginHeaderCL = driver.findElement(By.xpath("//div[@class=\"login-form\"]//h2"));
     private WebElement emailTextBox = driver.findElement(By.xpath("//input[@data-qa=\"login-email\"]"));
@@ -60,9 +61,9 @@ public class LoginAndRegistrationPage {
     }
 
     //Validations
-    //public void validateLogin (String logoutText){}
-    /*WebElement firstResult = driver.findElement(By.xpath("//a[@href=\"https://www.tiktok.com/@kh0lio\"]//span[contains(text(),'YourEverydayKholio (@kh0lio)')][1]"));
-    String actualText = firstResult.getText();
-    String expectedText = "YourEverydayKholio (@kh0lio)";
-        Assert.assertEquals(actualText,expectedText,"Text Doesn't Match");*/
+    public void validateLogin (String logoutText){
+        String actualText = driver.findElement(logoutButton).getText();
+        Assert.assertEquals(actualText,logoutText,"Text Doesn't Match");
+    }
+
 }

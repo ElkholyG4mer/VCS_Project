@@ -25,7 +25,7 @@ public class LoginAndRegistrationTests {
 
     @BeforeMethod
     public void setup(){
-        driver = new EdgeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         loginpage = new LoginAndRegistrationPage(driver);
         loginpage.urlNavigate();
@@ -36,12 +36,13 @@ public class LoginAndRegistrationTests {
         loginpage.ClickOnLoginTabButton();
         loginpage.FillLoginData(testData.getTestData("userName"),testData.getTestData("passWord"));
         loginpage.ClickOnLoginButton();
+        loginpage.validateLogin(testData.getTestData("expectedText"));
     }
 
-    /*@AfterTest
+    @AfterTest
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }

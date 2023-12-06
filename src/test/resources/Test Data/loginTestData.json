@@ -1,4 +1,5 @@
 {
   "userName" : "mostafa@gmail.com",
-  "passWord" : "abcd123456"
+  "passWord" : "abcd123456",
+  "expectedText" : "Logout"
 }
