@@ -3,7 +3,7 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginAndRegistrationPage {
     private WebDriver driver ;
@@ -61,4 +61,8 @@ public class LoginAndRegistrationPage {
 
     //Validations
     //public void validateLogin (String logoutText){}
+    /*WebElement firstResult = driver.findElement(By.xpath("//a[@href=\"https://www.tiktok.com/@kh0lio\"]//span[contains(text(),'YourEverydayKholio (@kh0lio)')][1]"));
+    String actualText = firstResult.getText();
+    String expectedText = "YourEverydayKholio (@kh0lio)";
+        Assert.assertEquals(actualText,expectedText,"Text Doesn't Match");*/
 }
