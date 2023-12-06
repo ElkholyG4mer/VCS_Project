@@ -54,11 +54,11 @@ public class LoginAndRegistrationPage {
         //loginButton.click();
     }
 
-    public void login (String userName , String password){
+    /*public void login (String userName , String password){
         ClickOnLoginTabButton();
         FillLoginData(userName,password);
         ClickOnLoginButton();
-    }
+    }*/
 
     //Validations
     public void validateLogin (String logoutText){

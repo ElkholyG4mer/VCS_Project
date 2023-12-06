@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginAndRegistrationTests {
     private WebDriver driver;
-
     private JsonFileManager testData;
     private LoginAndRegistrationPage loginpage ;
 
